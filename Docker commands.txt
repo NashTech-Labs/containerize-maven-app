@@ -1,0 +1,21 @@
+--Build the docker image
+docker build -t maven-app:v1 .
+
+--Check the images
+docker images | grep maven
+docker images | grep openjdk
+
+--Create a container of the image
+docker run --name maven-app-con -d maven-app:v1
+
+--Check logs to see the output
+docker logs maven-app-con
+
+--Check the state of container
+docker ps -a
+
+--Remove the container
+docker rm -f maven-app-con
+
+--Remove all the images
+docker rmi maven-app:v1 maven openjdk:8
